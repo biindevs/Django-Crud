@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Book</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        form {
+            background-color: white;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 500px;
+            width: 100%;
+        }
+        label, input {
+            display: block;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .field-wrapper {
+            margin-bottom: 1rem;
+        }
+        input[type="text"], input[type="date"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="field-wrapper">
+            <label for="{{ field.auto_id }}">{{ field.label }}</label>
+            {{ field }}
+            {% if field.errors %}
+            <div class="error-messages">
+                {% for error in field.errors %}
+                <p class="error-message">{{ error }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+        <button type="submit">Save Changes</button>
+    </form>
+</body>
+</html>

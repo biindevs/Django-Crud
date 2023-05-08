@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details</title>
+</head>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+    }
+    .card {
+        background-color: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        border-radius: 5px;
+        max-width: 500px;
+        width: 100%;
+    }
+    p {
+        margin: 0 0 10px;
+        line-height: 1.5;
+    }
+    h2 {
+        margin-bottom: 10px;
+    }
+</style>
+<body>
+    <div class="card">
+        <h2>Book: <span>{{book.title}}</span></h2>
+        <p>Author:<span>{{book.author}}</span></p>
+        <p>Published on: <span>{{book.pub_date|date:"F j, Y"}}</span></p>
+    </div>
+</body>
+</html>
